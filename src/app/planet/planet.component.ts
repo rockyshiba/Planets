@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Planet } from '../planet'; // use class definition src/app
 
 @Component({
   selector: 'app-planet',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./planet.component.css']
 })
 export class PlanetComponent implements OnInit {
+
+  planet: Planet = {id: 1, name: 'Mercury'};
 
   constructor() { }
 
