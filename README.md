@@ -1,14 +1,24 @@
-## Creating Components
+# Multiple objects
 
-Run 'ng generate component [name of component]' from project root. This will create a folder within src/app containing the necessary files of a component. When generating a component this way, app.module.ts is altered in src/app. Take a look at lines 5 and 10 in app.module.ts. This is how components are registered. Keep this in mind when you want to remove components. Removing components requires that you delete the folder containing the component and remove the component references inside app.module.ts
+In planet.component.ts there is a hard-coded array of planet objects. In the HTML this can be looped over one of many Angular attributes.
 
-In planet.component.ts an object is initiated to represent a planet, Mercury. This can be used in the component's view which in this context is planet.component.html. It is typed to a class defined outside the component. In order for components to utilize resources outside of the component, they must be imported which is done on line 2 in planet.component.ts. 
+## ngFor
 
-## Creating Classes
+ngFor will loop over loopable objects that exist inside the TypeScript of a component. Notice that the value of this attribute is a TypeScript loop statement. The loop variable, in this case 'p', can then be used to represent each loopable object.
 
-Run 'ng generate class [name of class]' from project root. This will create a class definition inside src/app which can be readily imported to other parts of an Angular project. You can see a newly created class definition in src/app called planet.ts.
+## ngIf
 
-# Planets
+ngIf operates on the same principles of javascript if statements. The value of this attribute will evaluate as true or false. The statement here determines if 'planet' is true or false. Now that planet is initally 'undefined' when the page loads, that evaluates as false in javascript which prevents the rest of the HTML from rendering.
+
+## (click)
+
+(click) is Angular's shortcut to adding listener events to your page. Here, click is being applied to each listable element within the ordered list. The value here is a function call with an argument which here is 'p', the loop variable. The function definition is within planet.component.ts which is setting 'planet' to a value. This then renders if(planet) true which in turn allows ngIf='planet' to render its contents.
+
+## [class.[intended class name]]
+
+Angular has conditional css class setters. In this example, if the object matches the 'planet' inside planet.component.ts, then that element will have the 'selected' css class applied which then applies the appropriate styling. Here, planet.component.css has a component-specific css class that will highlight an element as lightgrey.
+
+## Planets
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
 
@@ -35,4 +45,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-

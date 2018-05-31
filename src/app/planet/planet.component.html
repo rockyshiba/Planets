@@ -1,9 +1,17 @@
 <h1 class="text-center">Planets of our Solar System</h1>
-<div id="planet">
+<div class="page-wrapper">
+  <p>Click on any of the planets below to learn more about it!</p>
+</div>
+<div class="page-wrapper">
+  <ol id="planets">
+    <!--Loop over loopables-->
+    <li *ngFor="let p of planets" id="{{p.id}}" (click)="onSelect(p)" [class.selected]="p === planet">
+      {{p.name}}
+    </li>
+  </ol>
+</div>
+<div *ngIf="planet" id="planet" class="page-wrapper">
     <div id="{{ planet.id }}">
         <h2 class="text-center">{{ planet.name }}</h2>
     </div>
 </div>
-<ul id="planets">
-    <li></li>
-</ul>
