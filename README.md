@@ -1,22 +1,14 @@
-# Multiple objects
+# Services
 
-In planet.component.ts there is a hard-coded array of planet objects. In the HTML this can be looped over one of many Angular attributes.
+Typically, data shouldn't be within a component; components should be able to use data but data should be readily available outside the component, following the theme of separation of concerns.
 
-## ngFor
+## Creating a service
 
-ngFor will loop over loopable objects that exist inside the TypeScript of a component. Notice that the value of this attribute is a TypeScript loop statement. The loop variable, in this case 'p', can then be used to represent each loopable object.
+Run 'ng generate service [name of service]' to create a service within angular. These services will serve data to your application. You'll notice that like classes, these are made by angular *outisde* of components. You can often tell these are services because they are importing 'Injectable' from the core library. For now, don't alter @Injectable. This decorator simply tells Anuglar that this service is available from the root.
 
-## ngIf
+They key part of a service is it's ability to retrieve data *asynchronously*. Previous to this commit, the display of the planets was synchronous. Importing 'Observable' and 'of' allows the use of the rxjs library which has code to retrieve data when it's ready. Notice the 'Observable' and 'return of' in the getPlanets method of planet.service.ts.
 
-ngIf operates on the same principles of javascript if statements. The value of this attribute will evaluate as true or false. The statement here determines if 'planet' is true or false. Now that planet is initally 'undefined' when the page loads, that evaluates as false in javascript which prevents the rest of the HTML from rendering.
-
-## (click)
-
-(click) is Angular's shortcut to adding listener events to your page. Here, click is being applied to each listable element within the ordered list. The value here is a function call with an argument which here is 'p', the loop variable. The function definition is within planet.component.ts which is setting 'planet' to a value. This then renders if(planet) true which in turn allows ngIf='planet' to render its contents.
-
-## [class.[intended class name]]
-
-Angular has conditional css class setters. In this example, if the object matches the 'planet' inside planet.component.ts, then that element will have the 'selected' css class applied which then applies the appropriate styling. Here, planet.component.css has a component-specific css class that will highlight an element as lightgrey.
+To use a service in a component, simply import the service into the component. Angular recommends that the service be initiated in the 'contructor' method of the component. This also implicitly sets a property in the component class. How the service is used inside a component varies on what the component does. In this example, when the component loads a list of planets should be readily available. The ngOnInit method is premade for this purpose, so that's why getPlanets() is called there. The 'subscribe' method is part of 'Observable'. This method will retrieve a single value, the array of planets defined in the service.
 
 ## Planets
 
