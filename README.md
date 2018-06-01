@@ -1,14 +1,20 @@
-# Services
+# Using a Webservice
 
-Typically, data shouldn't be within a component; components should be able to use data but data should be readily available outside the component, following the theme of separation of concerns.
+This commit will show you have to retrieve data from a RESTful api. If you've been following the Heroes example by Angular, this is not covered by that tutorial.
 
-## Creating a service
+## app.module.ts
 
-Run 'ng generate service [name of service]' to create a service within angular. These services will serve data to your application. You'll notice that like classes, these are made by angular *outisde* of components. You can often tell these are services because they are importing 'Injectable' from the core library. For now, don't alter @Injectable. This decorator simply tells Anuglar that this service is available from the root.
+Up until know, you may not have had to interact with this file. For RESTful services to work in Anuglar, the HttpClientModule needs to be included from Anuglar's http library:
 
-They key part of a service is it's ability to retrieve data *asynchronously*. Previous to this commit, the display of the planets was synchronous. Importing 'Observable' and 'of' allows the use of the rxjs library which has code to retrieve data when it's ready. Notice the 'Observable' and 'return of' in the getPlanets method of planet.service.ts.
+import { HttpClientModule } from '@angular/common/http';
 
-To use a service in a component, simply import the service into the component. Angular recommends that the service be initiated in the 'contructor' method of the component. This also implicitly sets a property in the component class. How the service is used inside a component varies on what the component does. In this example, when the component loads a list of planets should be readily available. The ngOnInit method is premade for this purpose, so that's why getPlanets() is called there. The 'subscribe' method is part of 'Observable'. This method will retrieve a single value, the array of planets defined in the service.
+This also needs to be declared in 'imports' array that is part of @NgModule. Note that HttpClientModule needs to be *after* BrowserModule in the array.
+
+## Services Consuming API
+
+## planet.service.ts
+
+In this example, the planet service is consuming an api. To be able to use an api, the service also needs access to the Http library like app.module.ts. Notice the constructor: like a service injected into a component, http needs to be injected into the service. The getPlanet() method then returns the result of using an api endpoint. Configuring the source of data in services allows minimum involvment in other parts of the application. The component displaying the data, planet.component.ts, hasn't changed yet is now displaying live data provided from an api.
 
 ## Planets
 

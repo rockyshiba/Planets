@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'; // for HTTP requests
 
 import { AppComponent } from './app.component';
 import { PlanetComponent } from './planet/planet.component';
@@ -10,7 +11,8 @@ import { PlanetComponent } from './planet/planet.component';
     PlanetComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule, // after BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
