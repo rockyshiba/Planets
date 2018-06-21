@@ -2,6 +2,8 @@
 
 The custom routing module, app-routing.module.ts, requires components in order for the router to navigate to their content. Notice also in this file that the defined routes are in an array of objects, each with a property to recognize a URL and what component to display. 
 
+In views, navigating to these components requires anchor tags with the 'routerLink' attribute, the values of which correspond to routes defined in the router module. 
+
 ## Planets
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
