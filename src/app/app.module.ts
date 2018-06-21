@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http'; // for HTTP requests
 
 import { AppComponent } from './app.component';
 import { PlanetComponent } from './planet/planet.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PlanetComponent } from './planet/planet.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, // after BrowserModule
+    HttpClientModule,
+    AppRoutingModule, // after BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
