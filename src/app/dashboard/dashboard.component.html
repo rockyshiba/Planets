@@ -1,0 +1,9 @@
+<h1 class="text-center">Planets of the Solar System</h1>
+<div class="page-wrapper">
+  <p>
+    Below are the 8 planets of our Solar system starting with Mercury, the planet closest to the Sun, all the way to Neptune.
+  </p>
+  <ol *ngIf='planets'>
+    <li *ngFor='let p of planets'>{{ p.name }}</li>
+  </ol>
+</div>

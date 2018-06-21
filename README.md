@@ -1,20 +1,6 @@
-# Using a Webservice
+# Dashboard
 
-This commit will show you have to retrieve data from a RESTful api. If you've been following the Heroes example by Angular, this is not covered by that tutorial.
-
-## app.module.ts
-
-Up until know, you may not have had to interact with this file. For RESTful services to work in Anuglar, the HttpClientModule needs to be included from Anuglar's http library:
-
-import { HttpClientModule } from '@angular/common/http';
-
-This also needs to be declared in 'imports' array that is part of @NgModule. Note that HttpClientModule needs to be *after* BrowserModule in the array.
-
-## Services Consuming API
-
-## planet.service.ts
-
-In this example, the planet service is consuming an api. To be able to use an api, the service also needs access to the Http library like app.module.ts. Notice the constructor: like a service injected into a component, http needs to be injected into the service. The getPlanet() method then returns the result of using an api endpoint. Configuring the source of data in services allows minimum involvment in other parts of the application. The component displaying the data, planet.component.ts, hasn't changed yet is now displaying live data provided from an api.
+Dashboard component created as a default landing page / homepage.
 
 ## Planets
 
