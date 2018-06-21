@@ -27,7 +27,12 @@ export class PlanetService {
   }
 
   // method to retrieve array of objects
-  getPlanets(): Observable<Planet[]> {
+  getPlanets(id?: number): Observable<Planet[]> {
+    if(id){
+      return this.http.get<Planet[]>(`http://ghosteacher.com/apis/planets.php?apikey=pineapple&p_id=${id}`).pipe(
+        catchError(this.handleError)
+      );
+    }
     // return of(this.planets);
     return this.http.get<Planet[]>('http://ghosteacher.com/apis/planets.php?apikey=pineapple').pipe( // pipe method, contains catchError
       catchError(this.handleError) // handleError defined above
