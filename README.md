@@ -1,6 +1,6 @@
-# Dashboard
+# Routing
 
-Dashboard component created as a default landing page / homepage.
+The custom routing module, app-routing.module.ts, requires components in order for the router to navigate to their content. Notice also in this file that the defined routes are in an array of objects, each with a property to recognize a URL and what component to display. 
 
 ## Planets
 
