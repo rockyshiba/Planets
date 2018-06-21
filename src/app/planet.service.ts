@@ -26,13 +26,15 @@ export class PlanetService {
     return throwError ('Something bad happened!');
   }
 
+  //method to retrieve single object based on parameter id
+  getPlanet(id: number): Observable<Planet> {
+    return this.http.get<Planet>(`http:ghosteacher.com/apis/planets.php?apiKey=pineapple&p_id=${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // method to retrieve array of objects
-  getPlanets(id?: number): Observable<Planet[]> {
-    if(id){
-      return this.http.get<Planet[]>(`http://ghosteacher.com/apis/planets.php?apikey=pineapple&p_id=${id}`).pipe(
-        catchError(this.handleError)
-      );
-    }
+  getPlanets(): Observable<Planet[]> {
     // return of(this.planets);
     return this.http.get<Planet[]>('http://ghosteacher.com/apis/planets.php?apikey=pineapple').pipe( // pipe method, contains catchError
       catchError(this.handleError) // handleError defined above
